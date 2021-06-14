@@ -3,13 +3,8 @@ package org.example;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.OptionalInt;
-import java.util.Random;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -50,32 +45,25 @@ class MaxMethodTests {
         assertEquals(-2, result.getAsInt());
     }
 
-    @ParameterizedTest
-    @MethodSource("makeValues")
-    @DisplayName("For an array of length 10 returns its max value")
-    void testReturnsMaxValue(int[] values) {
-        int max = IntStream.of(values).reduce(Integer.MIN_VALUE, Math::max);
+    @Test
+    @DisplayName("For an array containing MAX_VALUE return the value")
+    void testReturnIntegerMaxIfArrayContainsIt() {
+        int[] values = new int[]{-10, 3, 255528, 0, Integer.MAX_VALUE, 100, 0};
         OptionalInt result = MaxMethod.max(values);
         assertNotNull(result);
         assertTrue(result.isPresent());
-        assertEquals(max, result.getAsInt());
+        assertEquals(Integer.MAX_VALUE, result.getAsInt());
     }
 
-    static Stream<int[]> makeValues() {
-        int rangeLen = 10000;
-        int halfRange = rangeLen / 2;
-        int maxLen = 1000000;
-
-        Random rand = new Random();
-        Stream.Builder<int[]> builder = Stream.builder();
-        for (int len = 1; len <= maxLen; len *= 2) {
-            int[] values = new int[len];
-            for (int i = 0; i < len; ++i) {
-                values[i] = rand.nextInt(rangeLen) - halfRange;
-            }
-            builder.add(values);
-        }
-
-        return builder.build();
+    @Test
+    @DisplayName("For an array containing value near to MAX_VALUE return the value")
+    void testReturnsValueNearToIntegerMaxIfArrayContainsIt() {
+        int diff = 27;
+        int toFind = Integer.MAX_VALUE - diff;
+        int[] values = new int[]{8332, 0, -123, 44, 23, 924823, toFind};
+        OptionalInt result = MaxMethod.max(values);
+        assertNotNull(result);
+        assertTrue(result.isPresent());
+        assertEquals(toFind, result.getAsInt());
     }
 }
