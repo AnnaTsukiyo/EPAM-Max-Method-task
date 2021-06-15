@@ -66,4 +66,31 @@ class MaxMethodTests {
         assertTrue(result.isPresent());
         assertEquals(toFind, result.getAsInt());
     }
+
+    @Test
+    void testReturnMaxValueForSampleArray() {
+        int[] values = new int[] {-574, -484, 444, -217, 978, -370, 269, -9, 189};
+        OptionalInt result = MaxMethod.max(values);
+        assertNotNull(result);
+        assertTrue(result.isPresent());
+        assertEquals(978, result.getAsInt());
+    }
+
+    @Test
+    void testReturnMaxValueForSampleArray2() {
+        int[] values = new int[] {-794,-206,-500,-410,-850, -249,-968,-536, -61, -65,-866};
+        OptionalInt result = MaxMethod.max(values);
+        assertNotNull(result);
+        assertTrue(result.isPresent());
+        assertEquals(-61, result.getAsInt());
+    }
+
+    @Test
+    void testReturnMaxValueForSampleArray3() {
+        int[] values = new int[] {806,  19, 140, 392,  36, 528, 351,  29, 786, 646, 656, 542, 890, 424};
+        OptionalInt result = MaxMethod.max(values);
+        assertNotNull(result);
+        assertTrue(result.isPresent());
+        assertEquals(890, result.getAsInt());
+    }
 }
