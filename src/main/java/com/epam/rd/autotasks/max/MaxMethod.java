@@ -1,4 +1,4 @@
-package org.example;
+package com.epam.rd.autotasks.max;
 
 import java.util.OptionalInt;
 
