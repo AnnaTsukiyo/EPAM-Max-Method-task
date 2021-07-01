@@ -10,7 +10,8 @@ The correct implementation should receive an array of `int` values and return it
 Consider that `values` may be an empty array or even `null`, in that case the implementation should return the result of
 [`empty`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/OptionalInt.html#empty()) static method 
 of `OptionalInt` class.\
-`values` may contain any `int` value between `Integer.MIN_VALUE` and `Integer.MAX_VALUE`.
+`max` method must not modify the array.
+`values` may contain any `int` value between `Integer.MIN_VALUE` and `Integer.MAX_VALUE`. 
 
 Method usage example:
 ```java
