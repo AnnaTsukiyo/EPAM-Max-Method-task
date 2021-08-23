@@ -1,4 +1,4 @@
-# Max
+# Optional Max method
 
 Implement `max` method of [`MaxMethod`](src/main/java/com/epam/rd/autotasks/max/MaxMethod.java) class.\
 It has following signature:
