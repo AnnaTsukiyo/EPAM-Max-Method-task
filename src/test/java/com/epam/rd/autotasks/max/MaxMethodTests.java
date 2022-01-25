@@ -14,8 +14,8 @@ class MaxMethodTests {
     void testReturnArraysSingleValue() {
         int[] values = new int[]{10};
         int result = MaxMethod.max(values);
-        assertEquals(values[0], result);
-    }
+        assertEquals(vlues[0], result);
+    }a
 
     @Test
     @DisplayName("For an array of negative ints returns correct max")
